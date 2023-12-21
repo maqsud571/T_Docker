@@ -5,9 +5,18 @@ services:
     container_name: django
     build:
       context: .
-      dockerfile: Dockerfile  # <-- Dockerfile faylini ko'rsatish
+      dockerfile: Dockerfile
     command: "python manage.py runserver 0.0.0.0:8000"
     volumes:
-      - ./Core:/app
+      - ./Core:/Core
     ports:
       - 8000:8000
+    depends_on:
+      - db
+
+  db:
+    image: postgres
+    environment:
+      POSTGRES_DB: mydatabase
+      POSTGRES_USER: myuser
+      POSTGRES_PASSWORD: mypassword
