@@ -5,7 +5,8 @@ services:
     container_name: django
     build:
       context: .
-    command: "python3 manage.py runserver 0.0.0.0:8000"
+      dockerfile: Dockerfile  # <-- Dockerfile faylini ko'rsatish
+    command: "python manage.py runserver 0.0.0.0:8000"
     volumes:
       - ./Core:/app
     ports:
