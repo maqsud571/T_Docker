@@ -1,0 +1,12 @@
+version: '3'
+
+services:
+  django:
+    container_name: django
+    build:
+      context: .
+    command: "python3 manage.py runserver 0.0.0.0:8000"
+    volumes:
+      - ./Core:/app
+    ports:
+      - 8000:8000
